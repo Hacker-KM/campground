@@ -1,10 +1,10 @@
 mapboxgl.accessToken = mapToken
 const map = new mapboxgl.Map({
-    container: 'cluster-map',
-    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mapbox/light-v11',
-    center: [-103.5917, 40.6699],
-    zoom: 3
+  container: "cluster-map",
+  // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+  style: "mapbox://styles/mapbox/navigation-night-v1",
+  center: [-103.5917, 40.6699],
+  zoom: 3,
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -24,35 +24,27 @@ map.on('load', () => {
     });
 
     map.addLayer({
-        id: 'clusters',
-        type: 'circle',
-        source: 'campgrounds',
-        filter: ['has', 'point_count'],
-        paint: {
-            // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-            // with three steps to implement three types of circles:
-            //   * Blue, 20px circles when point count is less than 100
-            //   * Yellow, 30px circles when point count is between 100 and 750
-            //   * Pink, 40px circles when point count is greater than or equal to 750
-            'circle-color': [
-                'step',
-                ['get', 'point_count'],
-                '#00BCD4',
-                10,
-                '#2196F3',
-                30,
-                '#3F51B5'
-            ],
-            'circle-radius': [
-                'step',
-                ['get', 'point_count'],
-                15,
-                10,
-                20,
-                30,
-                25
-            ]
-        }
+      id: "clusters",
+      type: "circle",
+      source: "campgrounds",
+      filter: ["has", "point_count"],
+      paint: {
+        // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+        // with three steps to implement three types of circles:
+        //   * Blue, 20px circles when point count is less than 100
+        //   * Yellow, 30px circles when point count is between 100 and 750
+        //   * Pink, 40px circles when point count is greater than or equal to 750
+        "circle-color": [
+          "step",
+          ["get", "point_count"],
+          "#df7ebc",
+          10,
+          "#2196F3",
+          30,
+          "#3F51B5",
+        ],
+        "circle-radius": ["step", ["get", "point_count"], 15, 10, 20, 30, 25],
+      },
     });
 
     map.addLayer({
@@ -68,16 +60,16 @@ map.on('load', () => {
     });
 
     map.addLayer({
-        id: 'unclustered-point',
-        type: 'circle',
-        source: 'campgrounds',
-        filter: ['!', ['has', 'point_count']],
-        paint: {
-            'circle-color': '#11b4da',
-            'circle-radius': 4,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
-        }
+      id: "unclustered-point",
+      type: "circle",
+      source: "campgrounds",
+      filter: ["!", ["has", "point_count"]],
+      paint: {
+        "circle-color": "#d1b23d",
+        "circle-radius": 4,
+        "circle-stroke-width": 1,
+        "circle-stroke-color": "#fff",
+      },
     });
 
     // inspect a cluster on click

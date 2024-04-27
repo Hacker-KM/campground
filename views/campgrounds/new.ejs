@@ -1,18 +1,20 @@
 <% layout('layouts/boilerplate')%>
 <div class="row">
-    <h1 class="text-center">New Campground</h1>
+    <h1 class="d-flex justify-content-center text-center mb-5 heading-animation">
+            <span class="gradient-text">New Campgrounds</span>
+        </h1>
     <div class="col-md-6 offset-md-3">
         <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
-                <input class="form-control" type="text" id="title" name="campground[title]" required>
+                <label class="form-label text-light" for="title">Title</label>
+                <input class="form-control bg-secondary text-white" type="text" id="title" name="campground[title]" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="location">Location</label>
-                <input class="form-control" type="text" id="location" name="campground[location]" required>
+                <label class="form-label text-light" for="location">Location</label>
+                <input class="form-control bg-secondary text-white" type="text" id="location" name="campground[location]" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -26,10 +28,10 @@
                 </div>
             </div> -->
             <div class="mb-3">
-                <label class="form-label" for="price">Campground Price</label>
+                <label class="form-label text-light" for="price">Campground Price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="price-label">$</span>
-                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                    <input type="text" class="form-control bg-secondary text-white" id="price" placeholder="0.00" aria-label="price"
                         aria-describedby="price-label" name="campground[price]" required>
                 </div>
                 <div class="valid-feedback">
@@ -38,8 +40,8 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <textarea class="form-control" type="text" id="description" name="campground[description]"
+                <label class="form-label text-light" for="description">Description</label>
+                <textarea class="form-control bg-secondary text-white" type="text" id="description" name="campground[description]"
                     required></textarea>
                 <div class="valid-feedback">
                     Looks good!
@@ -48,8 +50,8 @@
             <div class="mb-3">
                 <div class="form-file custom-file">
                     <input type="file" class="form-file-input" id="image" name="image" multiple>
-                    <label class="form-file-label" for="image">
-                        <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                    <label class="form-file-label text-light" for="image">
+                        <span class="form-file-text custom-file-label bg-secondary text-light">Choose image(s)...</span>
                         <span class="form-file-button">Browse</span>
                     </label>
                 </div>
@@ -58,6 +60,47 @@
                 <button class="btn btn-success">Add Campground</button>
             </div>
         </form>
-        <a href="/campgrounds">All Campgrounds</a>
+        <a href="/campgrounds"><button type="button" class="btn btn-primary">Back Home</button></a>
     </div>
 </div>
+
+<style>
+    .img-container {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .img-fixed-size {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-animation {
+        transition: all 0.3s ease;
+    }
+
+    .card-animation:hover {
+        transform: scale(1.05);
+        background-color: #343a40;
+    }
+
+    .heading-animation {
+        display: inline-block;
+    }
+
+    .gradient-text {
+        background: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+    }
+
+    .bg-dark {
+        background-color: #212529;
+    }
+
+    .bg-dark-card {
+        background-color: #343a40;
+    }
+</style>

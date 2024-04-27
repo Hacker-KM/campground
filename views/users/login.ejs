@@ -1,6 +1,135 @@
 <% layout('layouts/boilerplate')%>
+<!-- <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-<div class="container d-flex justify-content-center align-items-center mt-3 mb-5">
+    .container {
+        width: 60%;
+        padding: 20px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .card-img-top {
+        width: 50%;
+        height: 600px; /* This height will be overridden in responsive design */
+        display: block;
+    }
+
+    .card-body {
+        /* padding: 20px; */
+        
+        width: 50%;
+    }
+
+    .card-title {
+        margin-bottom: 20px;
+        margin-inline: 20px;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        margin-inline: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .btn, .home-btn {
+        width: 91%;
+        padding: 10px;
+        margin-inline: 20px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn {
+        background-color: #28a745;
+    }
+
+    .btn:hover {
+        background-color: #218838;
+    }
+
+    .home-btn {
+        margin-top: 5px;
+        background-color: black;
+    }
+
+    .home-btn:hover {
+        background-color: rgba(0, 0, 0, 0.579);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
+
+        .card {
+            flex-direction: column; /* Stacks elements vertically */
+        }
+
+        .card-img-top, .card-body {
+            width: 100%; /* Full width for both components */
+            height: auto; /* Adjust height for image */
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="Login Image" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <form action="/login" method="POST" class="validated-form" novalidate>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <a href="/"><button class="home-btn" onclick="window.location.href='/'">Back to Home</button></a>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div class="container d-flex justify-content-center align-items-center">
     <div class="row">
         <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
             <div class="card shadow">
@@ -30,4 +159,50 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<style>
+        @media (max-width: 768px) {
+            .responsive-card {
+                max-width: 100% !important; /* Increases width to 90% on smaller screens */
+            }
+            .card{
+                height: 700px !important;
+                width: 600px !important;
+            }
+        }
+    </style>
+
+    <div class="container d-flex vh-80 align-items-center justify-content-center">
+        <div class="card shadow" style="width: 80%; height: 550px;">
+            <div class="row g-0">
+                <div class="col-md-6 ">
+                    <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="Login Image" class="img-fluid rounded-start" style="height: 100%; object-fit: cover;">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-center mb-4">Login</h5>
+                        <form action="/login" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block">Login</button>
+                    </form>
+                        <a href="/" class="btn bg-dark text-white mt-2 w-100">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

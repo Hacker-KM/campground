@@ -1,42 +1,79 @@
 <% layout('/layouts/boilerplate') %>
 <div id="cluster-map"></div>
-    <h1>All campgrounds</h1>
-    
-
-    <% for(let campground of campgrounds) {%>
-        <div class="card mb-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <% if(campground.images.length) {%>
-                        <img class="img-fluid" src="<%=campground.images[0].url%>" alt="" crossorigin=""  >
-                        <% }else{ %>
-                            <img src="https://res.cloudinary.com/dthmj4l7m/image/upload/v1680603632/YelpCamp/vtnnxoah0pu2wyeelcvs.png"
-                                alt="" crossorigin="" >
-                            <% } %>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%=campground.title%>
-                        </h5>
-                       
-                        <p class="card-text">
-                            <%= campground.description %>
-                        </p>
-                        <p class="card-text">
-                            <small class="text-muted">
-                                <%= campground.location %>
-                            </small>
-                        </p>
-                        <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View <%=campground.title%>
-                                </a>
+<section class="py-5 bg-dark">
+    <div class="container">
+        <h1 class="d-flex justify-content-center text-center mb-5 heading-animation">
+            <span class="gradient-text">All Campgrounds</span>
+        </h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <% for(let campground of campgrounds) {%>
+            <div class="col">
+                <div class="card h-100 shadow-sm card-animation bg-dark-card">
+                    <div class="img-container">
+                        <% if(campground.images.length) {%>
+                        <img class="card-img-top img-fluid img-fixed-size" src="<%=campground.images[0].url%>" alt="<%=campground.title%>" crossorigin="">
+                        <% } else { %>
+                        <img class="card-img-top img-fluid img-fixed-size" src="https://res.cloudinary.com/dthmj4l7m/image/upload/v1680603632/YelpCamp/vtnnxoah0pu2wyeelcvs.png" alt="<%=campground.title%>" crossorigin="">
+                        <% } %>
+                    </div>
+                    <div class="card-body d-flex flex-column bg-secondary bg-gradient border-0">
+                        <h5 class="card-title text-white"><%=campground.title%></h5>
+                        <p class="card-text text-light"><%=campground.description.substring(0, 250)%>...</p>
+                        <div class="mt-auto">
+                            <p class="card-text text-light "><%=campground.location%></p>
+                            <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View <%=campground.title%></a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <% } %>
         </div>
-        <% } %>
+    </div>
+</section>
+
 <script>
     const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-    const campgrounds = {features:<%-JSON.stringify(campgrounds)%>}
+    const campgrounds = { features: <%-JSON.stringify(campgrounds)%> };
 </script>
-<script src="/javascripts/clusterMap.js" crossorigin="" ></script>
+<script src="/javascripts/clusterMap.js" crossorigin=""></script>
+
+<style>
+    .img-container {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .img-fixed-size {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-animation {
+        transition: all 0.3s ease;
+    }
+
+    .card-animation:hover {
+        transform: scale(1.05);
+        background-color: #343a40;
+    }
+
+    .heading-animation {
+        display: inline-block;
+    }
+
+    .gradient-text {
+        background: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+    }
+
+    .bg-dark {
+        background-color: #212529;
+    }
+
+    .bg-dark-card {
+        background-color: #343a40;
+    }
+</style>
