@@ -1,3 +1,5 @@
+**YELPCAMP**
+
 YelpCamp is a full-stack web application that allows users to explore, create, and review campgrounds. Inspired by platforms like Yelp, YelpCamp provides a comprehensive interface for outdoor enthusiasts to find and share information about camping sites. Users can browse campgrounds, view detailed information, read reviews, and contribute their own campgrounds and reviews.
 
 **Objectives**
